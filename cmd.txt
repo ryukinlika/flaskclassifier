@@ -2,3 +2,13 @@ flask run --no-debugger
 
 [virtual env]
 venv\Scripts\activate 
+
+[pip installs]
+bootstrap-flask
+flask
+tensorflow
+keras-cv-attention-models
+numpy
+pandas
+pillow
+python-dotenv
