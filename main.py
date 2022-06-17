@@ -11,9 +11,24 @@ import tensorflow as tf
 import keras
 import numpy as np
 from keras_cv_attention_models import coatnet
-
+import json
+from json import JSONEncoder
+from google.cloud import aiplatform
+from google.oauth2 import service_account
+import aiplatform_custom
+import requests
+class NumpyArrayEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            print("is nd array!")
+            return obj.tolist()
+        return JSONEncoder.default(self, obj)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+PROJECT_NAME = "nema-online-classifier"
+PROJECT_LOCATION = "asia-northeast1"
+PROJECT_ENDPOINT_ID = "7422108107767021568"
+PROJECT_API_ENDPOINT = "asia-northeast1-aiplatform.googleapis.com"
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -66,41 +81,69 @@ def inference():
     print(filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
-    # loada classifier
+    # load classifier
     modelType = request.form.get('model')
-    if modelType == "coatnet":
-        model = keras.models.load_model("model/mix/3_coatnet_sgd_normal")
-    elif modelType == "efficientnet":
-        model = keras.models.load_model("model/mix/1_efficientnet_adam_brightness_blur.h5", compile=False)
-    elif modelType == "resnet":
-        model = keras.models.load_model("model/mix/4_resnet_adam_normal.h5", compile=False)
-    elif modelType == "coatnet_local":
-        model = keras.models.load_model("model/local/2_coatnet_sgd_normal")
-    elif modelType == "efficientnet_local":
-        model = keras.models.load_model("model/local/1_efficientnet_rmsprop_brightness.h5", compile=False)
-    else: #resnet local
-        model = keras.models.load_model("model/local/5_resnet_sgd_normal.h5", compile=False)
+    # if modelType == "coatnet":
+    #     model = keras.models.load_model("model/mix/3_coatnet_sgd_normal")
+    # elif modelType == "efficientnet":
+    #     model = keras.models.load_model("model/mix/1_efficientnet_adam_brightness_blur.h5", compile=False)
+    # elif modelType == "resnet":
+    #     model = keras.models.load_model("model/mix/4_resnet_adam_normal.h5", compile=False)
+    # elif modelType == "coatnet_local":
+    #     model = keras.models.load_model("model/local/2_coatnet_sgd_normal")
+    # elif modelType == "efficientnet_local":
+    #     model = keras.models.load_model("model/local/1_efficientnet_rmsprop_brightness.h5", compile=False)
+    # else: #resnet local
+    #     model = keras.models.load_model("model/local/5_resnet_sgd_normal.h5", compile=False)
 
     # prepare image
     img = tf.io.read_file(path)
-    img = tf.io.decode_image(img, channels=3, dtype=tf.float32)
-    img = tf.image.grayscale_to_rgb(tf.image.rgb_to_grayscale(img))
+    img = tf.io.decode_image(img, channels=1, dtype=tf.float16)
+    # img = tf.image.grayscale_to_rgb(tf.image.rgb_to_grayscale(img))
+    # img = tf.image.rgb_to_grayscale(img)
     if "coatnet" not in modelType: # model Efficientnet and ResNet
         print("not coatnet")
         img = (img - 0.5) / 0.5  # value to -1:1
-    print("============IMAGE SHAPE=============")
-    print(img.shape)
+    # print("============IMAGE SHAPE=============")
+    # print(img.shape)  
     resized_img = tf.image.resize(img, [224, 224])
     resized_img = np.expand_dims(resized_img, axis=0)
-    print(resized_img.shape)
 
-    # get prediction
-    prediction = model.predict(resized_img)
+    # y = np.empty((1,224,224,1))
+    # np.around(x, decimals=4, out=y)
+    # numpyData = {"instances": x}
+    # # print(numpyData)
+    # encodedNumpyData = json.dumps(x, cls=NumpyArrayEncoder)  # use dump() to write array into file
+
+    # f = open("test.txt", "w")
+    # f.write(encodedNumpyData)
+    # f.close()
+
+    data = resized_img.tolist()
+
+    prediction = endpoint_predict_sample(PROJECT_NAME, PROJECT_LOCATION, PROJECT_ENDPOINT_ID, 
+        instances = data
+    )
     
+    # print(type(prediction))
     if "local" in modelType: 
         print("local in type")
-        predict_label = local_classes[np.argmax(prediction)]
+        predict_label = local_classes[np.argmax(prediction.predictions[0])]
     else: 
-        predict_label = mix_classes[np.argmax(prediction)]
+        predict_label = mix_classes[np.argmax(prediction.predictions[0])]
 
     return render_template('inference.html', filename=filename, prediction=predict_label, model=modelType)
+
+
+def endpoint_predict_sample(
+    project: str, location: str, endpoint: str, instances: list,
+):
+    creds = service_account.Credentials.from_service_account_file("json/nema-online-classifier-e5d23692a03d.json")
+    aiplatform.init(project=project, location=location, credentials=creds)
+
+    endpoint = aiplatform.Endpoint(endpoint)
+
+    prediction = endpoint.predict(instances=instances)
+    print(prediction)
+    return prediction
+
