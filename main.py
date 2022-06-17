@@ -1,28 +1,27 @@
-from operator import contains, methodcaller
+# from operator import contains, methodcaller
 import os
 from app import app, bootstrap
 from predict_classes import mix_classes, local_classes
-import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
-import pandas as pd
-import joblib
 import tensorflow as tf
-import keras
 import numpy as np
-from keras_cv_attention_models import coatnet
-import json
-from json import JSONEncoder
 from google.cloud import aiplatform
 from google.oauth2 import service_account
-import aiplatform_custom
-import requests
-class NumpyArrayEncoder(JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.ndarray):
-            print("is nd array!")
-            return obj.tolist()
-        return JSONEncoder.default(self, obj)
+# import keras
+# import pandas as pd
+# import urllib.request
+# import joblib
+# from keras_cv_attention_models import coatnet
+# import json
+# from json import JSONEncoder
+
+# class NumpyArrayEncoder(JSONEncoder):
+#     def default(self, obj):
+#         if isinstance(obj, np.ndarray):
+#             print("is nd array!")
+#             return obj.tolist()
+#         return JSONEncoder.default(self, obj)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 PROJECT_NAME = "nema-online-classifier"
