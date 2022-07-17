@@ -18,47 +18,36 @@
     <body class="d-flex flex-column min-vh-100">
         <div id="header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="px-3">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="/">Nematode WebApp</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                          <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/upload">Try Classification</a>
-                        </li>
-                    </ul>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </div>
-        <div id="content" class="container-fluid p-3">
+
+        <div id="content" class="container-fluid my-auto p-0">
             <!-- Your page content -->
             {% block content %}{% endblock %}
         </div>
 
-        <div id="footer" class="text-center text-muted mt-auto">
+        <div id="footer" class="text-center text-muted ">
             <section class="">
-                <div class="container text-center text-md-start mt-5">
-                  <!-- Grid row -->
+                <div class="container text-center text-md-start ">
                     <div class="row mt-3">
-                        <h6 class="text-uppercase fw-bold mb-4">Available models:</h6>
-                        <p>
-                            CoAtNet0
-                        </p>
-                        <p>
-                            EfficientNetV2M
-                        </p>
-                        <p>
-                            ResNet101v2
+                        <h6 class="text-uppercase fw-bold mb-1">Current model: EfficientNetV2B0</h6>
+                        <p style="font-size:0.7rem;">
+                            Model last updated at: July 17, 2022
                         </p>
                     </div>
-                    <!-- Grid row -->
                 </div> 
             </section>
         </div>
