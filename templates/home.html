@@ -55,7 +55,7 @@
 	<h1 class="font-weight-bold align-middle">Automatic Identification of Plant-Parasitic Nematode</h1>
 	<p> Nematode Classification using deep learning to identify and classify Nematodes commonly found in Indonesian soil  </p>
 	<div class="row py-4">
-		<div class="col-7 mx-auto border border-secondary">
+		<div class="col-md-6 mx-auto border border-secondary">
 			<form method="post" action="/inference" enctype="multipart/form-data">
 				<div class="input-group px-2 pt-4 py-2">
 					<input id="upload" name="file" type="file" onchange="readURL(this);" class="form-control border-0">
@@ -68,11 +68,13 @@
 				</div>
 				
 				<!-- Uploaded image area-->
-				<button type="button" id="imageWrapper" class="container-fluid btn bg-transparent image-wrapper" >
-					<div class="image-area mt-4">
-						<img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
-					</div>
-				</button>
+				<div class="col-lg-7 mx-auto">
+					<button type="button" id="imageWrapper" class="container-fluid btn bg-transparent image-wrapper" >
+						<div class="image-area mt-4">
+							<img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+						</div>
+					</button>
+				</div>
 
 				<button class="btn btn-primary my-3">
 					Inference
