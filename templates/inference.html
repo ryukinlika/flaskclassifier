@@ -81,6 +81,13 @@
 				  {% endif %}
 				{% endwith %}
 			</p>
+			{% if not filename %}
+			<a href="/">
+				<button class="btn btn-primary mb-3">
+					Back to home
+				</button>
+			</a>
+			{% endif %}
 		</div>
 	</div>
 </div>
