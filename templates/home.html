@@ -47,6 +47,10 @@
 	outline:none !important; 
 	box-shadow: none;
 }
+
+#text-placeholder:disabled{
+	background-color:white
+}
 </style>
 
 {% endblock %}
@@ -58,8 +62,9 @@
 		<div class="col-md-6 mx-auto border border-secondary">
 			<form method="post" action="/inference" enctype="multipart/form-data">
 				<div class="input-group px-2 pt-4 py-2">
-					<input id="upload" name="file" type="file" onchange="readURL(this);" class="form-control border-0">
-					<label id="upload-label" for="upload" class="font-weight-light text-muted">Upload sample file</label>
+					<input id="upload" name="file" type="file" onchange="readURL(this);" class=" border-0" hidden>
+					<input id="text-placeholder" type="text" disabled class="form-control border-0" title="" class="bg-primary">
+					<label id="upload-label" class="font-weight-light text-muted">Upload sample file</label>
 					<div class="input-group-append">
 						<label for="upload" class="btn btn-secondary m-0 px-4"> 
 							<small class="text-uppercase font-weight-bold ">Choose file</small>
