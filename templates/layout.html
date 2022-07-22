@@ -17,9 +17,9 @@
     </head>
     <body class="d-flex flex-column min-vh-100">
         <div id="header">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-2 border-bottom px-5">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">Nematode WebApp</a>
+                    <a class="navbar-brand px-2" href="/" style="font-weight: bold; color: #3ab6c4">Nematode WebApp</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -39,11 +39,11 @@
             {% block content %}{% endblock %}
         </div>
 
-        <div id="footer" class="text-center text-muted ">
+        <div id="footer" class="text-muted">
             <section class="">
-                <div class="container text-center text-md-start ">
+                <div class="container text-md-start mx-5">
                     <div class="row mt-3">
-                        <h6 class="text-uppercase fw-bold mb-1">Current model: EfficientNetV2B0</h6>
+                        <h6 class="text-uppercase fw-bold mb-1" style="font-size: 0.9rem;">Current model: EfficientNetV2B0</h6>
                         <p style="font-size:0.7rem;">
                             Model last updated at: July 20, 2022
                         </p>

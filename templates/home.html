@@ -23,11 +23,12 @@
     padding: 1rem;
     position: relative;
 	min-height: 20vh;
+	border-color: #22676f;
 }
 
 .image-area::before {
 	content: 'Upload Image';
-    color: #5d5d5d;
+    color: #22676f;
     font-weight: bold;
     text-transform: uppercase;
     position: absolute;
@@ -57,7 +58,7 @@
 {% block content %}
 <div class="text-center container-fluid my-auto py-3">
 	<h1 class="font-weight-bold align-middle">Automatic Identification of Plant-Parasitic Nematode</h1>
-	<p> Nematode Classification using deep learning to identify and classify Nematodes commonly found in Indonesian soil  </p>
+	<p class="text-muted"> Nematode Classification using deep learning to identify and classify Nematodes commonly found in Indonesian soil  </p>
 	<div class="row py-4">
 		<div class="col-md-6 mx-auto border border-secondary">
 			<form method="post" action="/inference" enctype="multipart/form-data">
@@ -81,8 +82,8 @@
 					</button>
 				</div>
 
-				<button class="btn btn-primary my-3">
-					Inference
+				<button class="btn btn-info my-3" style="background-color:#3ab6c4">
+					<p class="text-white m-0 p-0">Inference</p>
 				</button>
 			</form>
 		</div>

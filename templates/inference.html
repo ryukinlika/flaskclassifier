@@ -23,10 +23,11 @@
     padding: 1rem;
     position: relative;
 	min-height: 20vh;
+	border-color: #22676f;
 }
 
 .image-area::before {
-    color: #5d5d5d;
+    color: #22676f;
     font-weight: bold;
     text-transform: uppercase;
     position: absolute;
@@ -48,7 +49,7 @@
 {% block content %}
 <div class="text-center container-fluid my-auto py-3">
 	<h1 class="font-weight-bold align-middle">Automatic Identification of Plant-Parasitic Nematode</h1>
-	<p class="mb-0">Inference Result</p>
+	<p class="mb-0 text-muted">Inference Result</p>
 	<div class="row py-2">
 		<div class="col-md-6 mx-auto border border-secondary">
 			{% if filename %}
@@ -61,11 +62,11 @@
 
 			<div class="container mt-3">
 				<h4 class="font-weight-bold ">Identification Result</h3>	
-				<p class="font-weight-bold">{{inference}}, {{percentage}}%</p>
+				<p class="font-weight-bold text-muted">{{inference}}, {{percentage}}%</p>
 			</div>
 
 			<a href="/">
-				<button class="btn btn-primary mb-3">
+				<button class="btn btn-primary mb-3" style="background-color:#3ab6c4">
 					Upload another image
 				</button>
 			</a>
@@ -83,7 +84,7 @@
 			</p>
 			{% if not filename %}
 			<a href="/">
-				<button class="btn btn-primary mb-3">
+				<button class="btn btn-primary mb-3" style="background-color:#3ab6c4">
 					Back to home
 				</button>
 			</a>
