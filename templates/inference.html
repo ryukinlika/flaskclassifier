@@ -48,7 +48,7 @@
 {% endblock %}
 {% block content %}
 <div class="text-center container-fluid my-auto py-3">
-	<h1 class="font-weight-bold align-middle">Automatic Identification of Plant-Parasitic Nematode</h1>
+	<h1 class="font-weight-bold align-middle" style="color: #3ac4b4;">Automatic Identification of Plant-Parasitic Nematode</h1>
 	<p class="mb-0 text-muted">Inference Result</p>
 	<div class="row py-2">
 		<div class="col-md-6 mx-auto border border-secondary">
@@ -61,13 +61,13 @@
 			</div>
 
 			<div class="container mt-3">
-				<h4 class="font-weight-bold ">Identification Result</h3>	
+				<h4 class="font-weight-bold" style="color: #3ac4b4;">Identification Result</h3>	
 				<p class="font-weight-bold text-muted">{{inference}}, {{percentage}}%</p>
 			</div>
 
 			<a href="/">
-				<button class="btn btn-primary mb-3" style="background-color:#3ab6c4">
-					Upload another image
+				<button class="btn btn-info mb-3" style="background-color:#3ab6c4">
+					<p class="text-white p-0 m-0">Upload another image</p>
 				</button>
 			</a>
 			{% endif %}
