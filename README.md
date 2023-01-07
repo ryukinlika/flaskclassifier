@@ -12,6 +12,7 @@ A simple deep learning nematode classifier Webapp developed using Flask web fram
 - Trained on Dataset with 1016 files belonging to 11 classes
 
 Model trained as part of a research: [Deep learning models for automatic identification of plant-parasitic nematode](https://doi.org/10.1016/j.aiia.2022.12.002)
+
 For further implementation, please citate the [research paper](https://doi.org/10.1016/j.aiia.2022.12.002). 
 
 | Genus                 | # of Samples |
@@ -31,6 +32,8 @@ For further implementation, please citate the [research paper](https://doi.org/1
 
 ## Modifying This Work <a name="improve"></a>
 Either fork the repository or download it to your local system.
+
+Please citate the [research paper](https://doi.org/10.1016/j.aiia.2022.12.002) if you intend to use it in a publication. 
 
 The `static/uploads` folder contains uploaded images, and can be deleted after inferences.
 
