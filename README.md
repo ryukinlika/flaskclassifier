@@ -10,9 +10,9 @@
 A simple deep learning nematode classifier Webapp developed using Flask web framework. 
 - Model used: EfficientNetV2B0
 - Trained on Dataset with 1016 files belonging to 11 classes
-- Training colab code: https://colab.research.google.com/drive/1z_zSHsHdYD5Mb02r7WBh5hOyCKAZNjJR?usp=sharing
 
 Model trained as part of a research: [Deep learning models for automatic identification of plant-parasitic nematode](https://doi.org/10.1016/j.aiia.2022.12.002)
+For further implementation, please citate the [research paper](https://doi.org/10.1016/j.aiia.2022.12.002). 
 
 | Genus                 | # of Samples |
 |-----------------------|--------------|
@@ -90,5 +90,4 @@ Refer to: [Deploying with Git | Heroku Dev Center](https://devcenter.heroku.com/
 
 
 ## Other Resources <a name="ref"></a>
-- [Training Code](https://colab.research.google.com/drive/1z_zSHsHdYD5Mb02r7WBh5hOyCKAZNjJR?usp=sharing)
 - [How to Deploy a Flask App on Heroku](https://dev.to/techparida/how-to-deploy-a-flask-app-on-heroku-heb) by Trilochan Parida
