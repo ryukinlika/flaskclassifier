@@ -11,6 +11,7 @@ A simple deep learning nematode classifier Webapp developed using Flask web fram
 - Model used: EfficientNetV2B0
 - Trained on Dataset with 1016 files belonging to 11 classes
 - Training colab code: https://colab.research.google.com/drive/1z_zSHsHdYD5Mb02r7WBh5hOyCKAZNjJR?usp=sharing
+
 Model trained as part of a research: [Deep learning models for automatic identification of plant-parasitic nematode](https://doi.org/10.1016/j.aiia.2022.12.002)
 
 | Genus                 | # of Samples |
